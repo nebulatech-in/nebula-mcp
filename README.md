@@ -31,12 +31,14 @@ The server cannot change anything. All tools are marked
 
 | Tool | Input | Returns |
 |---|---|---|
-| `nebula_overview` | none | Organisation facts, founders, services, industries and frameworks |
-| `nebula_search` | `query` (string, required) | Up to 6 matching records with their section path |
+| `nebula_overview` | none | Organisation facts, founders, services, industries, frameworks, counts |
+| `nebula_search` | `query` (string, required), `limit` (integer 1-20), `offset` (integer >= 0) | Ranked results with path/score/record, plus total, offset, limit, nextOffset |
+| `nebula_list` | `section` (optional), `limit` (integer 1-100), `offset` (integer >= 0) | Items with title/url/section/date, plus total, offset, limit, nextOffset |
 | `nebula_section` | `path` (string, required), `offset` (integer >= 0), `limit` (integer 1-50, default 20) | One section or record by dotted path |
 
-Sections for `nebula_section`: organization, people, services, industries,
-frameworks, research, externalAssets, answers, blogs. Examples: `services`,
+Sections for `nebula_list` and `nebula_section`: organization, people,
+services, industries, frameworks, research, externalAssets, answers, blogs.
+Case studies are not available. Examples for `nebula_section`: `services`,
 `answers.0`, `organization.address`.
 
 ## Try it with curl
