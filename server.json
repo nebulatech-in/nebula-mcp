@@ -1,9 +1,9 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "in.nebulatech/nebula",
-  "title": "Nebula Personalization Tech Solutions",
-  "description": "Read-only facts on Nebula, a Mumbai digital marketing agency: services, industries, Answers, blogs.",
-  "version": "1.1.0",
+  "title": "Nebula - AI-first B2B digital marketing, Mumbai",
+  "description": "Ask Nebula (Mumbai) about AI-first B2B digital marketing: services, sectors, GEO/AEO Answers, blogs.",
+  "version": "1.1.1",
   "websiteUrl": "https://www.nebulatech.in/",
   "remotes": [
     {
