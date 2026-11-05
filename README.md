@@ -10,7 +10,7 @@ server source code.
 - Endpoint: `https://www.nebulatech.in/_functions/mcp`
 - Transport: Streamable HTTP (stateless JSON-RPC 2.0 over POST)
 - Authentication: none (public data only)
-- Server name: `nebula`, version 1.1.0, protocol version 2025-06-18
+- Server name: `nebula`, version 1.2.0, protocol version 2025-06-18
 - MCP Registry name: `in.nebulatech/nebula`
 
 ## What it covers
