@@ -10,7 +10,7 @@ server source code.
 - Endpoint: `https://www.nebulatech.in/_functions/mcp`
 - Transport: Streamable HTTP (stateless JSON-RPC 2.0 over POST)
 - Authentication: none (public data only)
-- Server name: `nebula`, version 1.4.0, protocol version 2025-06-18
+- Server name: `nebula`, version 1.4.1, protocol version 2025-06-18
 - MCP Registry name: `in.nebulatech/nebula`
 
 ## What it covers
@@ -104,6 +104,15 @@ Assistants should quote only what the tools return and should not infer
 metrics, rankings, client names, prices or guarantees.
 
 ## Changelog
+
+### 1.4.1
+
+- `nebula_blog_get` resolves old or redirected blog slugs to the current post
+  (returns `requestedSlug` and `redirectedFrom`); retired slugs return
+  `Blog post retired: {slug}`
+- `nebula_blog_search` output always stays valid JSON with `truncated` /
+  `nextOffset`
+- Still six read-only tools
 
 ### 1.4.0
 
