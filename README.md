@@ -10,7 +10,7 @@ server source code.
 - Endpoint: `https://www.nebulatech.in/_functions/mcp`
 - Transport: Streamable HTTP (stateless JSON-RPC 2.0 over POST)
 - Authentication: none (public data only)
-- Server name: `nebula`, version 1.2.0, protocol version 2025-06-18
+- Server name: `nebula`, version 1.3.0, protocol version 2025-06-18
 - MCP Registry name: `in.nebulatech/nebula`
 
 ## What it covers
@@ -20,7 +20,10 @@ knowledge base on nebulatech.in:
 
 - About: organisation facts, founders, services, industries served and the
   RASA research framework
-- Answers: the published Answers pages
+- Answers: the published Answers pages; reading one Answer returns its full
+  body in Markdown (`fullAnswer`)
+- Case studies: published client case studies; results are as reported by
+  Nebula on each case study page
 - Blogs: a list of blog posts
 
 The server cannot change anything. All tools are marked
@@ -37,9 +40,9 @@ The server cannot change anything. All tools are marked
 | `nebula_section` | `path` (string, required), `offset` (integer >= 0), `limit` (integer 1-50, default 20) | One section or record by dotted path |
 
 Sections for `nebula_list` and `nebula_section`: organization, people,
-services, industries, frameworks, research, externalAssets, answers, blogs.
-Case studies are not available. Examples for `nebula_section`: `services`,
-`answers.0`, `organization.address`.
+services, industries, frameworks, research, externalAssets, pages, answers,
+caseStudies, blogs. Examples for `nebula_section`: `services`, `answers.0`,
+`answers.0.fullAnswer`, `caseStudies.0`, `organization.address`.
 
 ## Try it with curl
 
@@ -94,7 +97,8 @@ Other clients that accept a remote Streamable HTTP server:
 ## Usage note
 
 Assistants should quote only what the tools return and should not infer
-metrics, rankings, client names, prices or guarantees.
+metrics, rankings, client names, prices or guarantees. Cite the case study
+page when using case study results.
 
 ## Links
 

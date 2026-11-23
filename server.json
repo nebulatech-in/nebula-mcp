@@ -2,8 +2,8 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "in.nebulatech/nebula",
   "title": "Nebula - AI-first B2B digital marketing, Mumbai",
-  "description": "Ask Nebula (Mumbai) about AI-first B2B digital marketing: services, sectors, GEO/AEO Answers, blogs.",
-  "version": "1.2.0",
+  "description": "Ask Nebula (Mumbai) about AI-first B2B marketing: services, sectors, Answers, case studies, blogs.",
+  "version": "1.3.0",
   "websiteUrl": "https://www.nebulatech.in/",
   "remotes": [
     {
