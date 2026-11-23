@@ -10,7 +10,7 @@ server source code.
 - Endpoint: `https://www.nebulatech.in/_functions/mcp`
 - Transport: Streamable HTTP (stateless JSON-RPC 2.0 over POST)
 - Authentication: none (public data only)
-- Server name: `nebula`, version 1.4.1, protocol version 2025-06-18
+- Server name: `nebula`, version 1.4.2, protocol version 2025-06-18
 - MCP Registry name: `in.nebulatech/nebula`
 
 ## What it covers
@@ -24,7 +24,7 @@ knowledge base on nebulatech.in. Content is English only.
   as Markdown (`fullAnswer`)
 - Case studies: published case studies (as reported on each case study page)
 - Blogs: a list of blog posts, plus full article Markdown via
-  `nebula_blog_get` / `nebula_blog_search` for active published English posts
+  `nebula_get_blog` / `nebula_search_blog` for active published English posts
 
 The server cannot change anything. All tools are marked
 `readOnlyHint: true`, `destructiveHint: false`, `idempotentHint: true` and
@@ -32,20 +32,23 @@ The server cannot change anything. All tools are marked
 
 ## Tools
 
-| Tool | Input | Returns |
-|---|---|---|
-| `nebula_overview` | none | Organisation facts, founders, services, industries, frameworks, counts |
-| `nebula_search` | `query` (string, required), `limit` (integer 1-20), `offset` (integer >= 0) | Ranked results with path/score/record, plus total, offset, limit, nextOffset |
-| `nebula_list` | `section` (optional), `limit` (integer 1-100), `offset` (integer >= 0) | Items with title/url/section/date, plus total, offset, limit, nextOffset |
-| `nebula_section` | `path` (string, required), `offset` (integer >= 0), `limit` (integer 1-50, default 20) | One section or record by dotted path; Answers include `fullAnswer` Markdown |
-| `nebula_blog_get` | `slug` or `url` or `index`, optional `contentOffset` | Full Markdown body of one active English blog post, with canonicalUrl, publisher, datePublished, dateModified, language; paginated via contentOffset |
-| `nebula_blog_search` | `query` (string, required), `limit` (integer 1-20) | Ranked full-text search across English blog posts with matched snippets |
+| Tool | Description |
+|---|---|
+| `nebula_get_overview` | Organisation facts, founders, services, industries, frameworks, counts |
+| `nebula_search_knowledge` | Ranked keyword search across knowledge sections (compact records) |
+| `nebula_list_knowledge` | Browse knowledge items by section (title, url, section, date) |
+| `nebula_get_section` | One section or record by dotted path; Answers include `fullAnswer` Markdown |
+| `nebula_get_blog` | Full Markdown body of one active English blog post by slug, URL, or index |
+| `nebula_search_blog` | Full-text search across English blog posts with matched snippets |
 
-Sections for `nebula_list` and `nebula_section`: organization, people,
-services, industries, frameworks, research, externalAssets, pages, answers,
-caseStudies, blogs. Blog list entries stay compact (title, url, excerpt,
-date); use `nebula_blog_get` for the full article. Examples for
-`nebula_section`: `services`, `answers.0`, `caseStudies.0`,
+Previous names still work as aliases: `nebula_overview`, `nebula_search`,
+`nebula_list`, `nebula_section`, `nebula_blog_get`, `nebula_blog_search`.
+
+Sections for `nebula_list_knowledge` and `nebula_get_section`: organization,
+people, services, industries, frameworks, research, externalAssets, pages,
+answers, caseStudies, blogs. Blog list entries stay compact (title, url,
+excerpt, date); use `nebula_get_blog` for the full article. Examples for
+`nebula_get_section`: `services`, `answers.0`, `caseStudies.0`,
 `organization.address`.
 
 ## Try it with curl
@@ -65,7 +68,7 @@ Search:
 curl -s -X POST https://www.nebulatech.in/_functions/mcp \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json, text/event-stream' \
-  -d '{"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"nebula_search","arguments":{"query":"SEO"}}}'
+  -d '{"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"nebula_search_knowledge","arguments":{"query":"SEO"}}}'
 ```
 
 ## Add it to an MCP client
@@ -104,6 +107,14 @@ Assistants should quote only what the tools return and should not infer
 metrics, rankings, client names, prices or guarantees.
 
 ## Changelog
+
+### 1.4.2
+
+- Consistent `verb_noun` tool names (`nebula_get_overview`,
+  `nebula_search_knowledge`, `nebula_list_knowledge`, `nebula_get_section`,
+  `nebula_get_blog`, `nebula_search_blog`); previous names remain aliases
+- Clearer when-to-use descriptions on each tool
+- `author` field removed from blog output
 
 ### 1.4.1
 
